@@ -1,0 +1,53 @@
+# Node Modules
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log*
+
+# Build Output
+dist/
+build/
+.eslintcache
+.cache/
+.vscode/
+.idea/
+.DS_Store
+
+# TypeScript
+*.tsbuildinfo
+
+# Storybook
+storybook-static/
+.storybook/out/
+.storybook/cache/
+
+# Jest & Testing
+coverage/
+*.log
+jest.config.js
+jest.cache/
+.vscode-test/
+
+# Webpack & Babel
+.babelrc
+.nyc_output/
+webpack-assets.json
+.cache-loader/
+
+# Editor & IDE
+#.vscode/
+#.idea/
+#*.iml
+#*.suo
+#*.ntvs*
+#*.njsproj
+#*.sln
+#*.sw?
+#*.bak
+
+# Env Files (Do not commit secrets)
+.env
+.env.local
