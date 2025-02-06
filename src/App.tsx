@@ -1,15 +1,15 @@
-import React from "react";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import RegistrationForm from "./components/RegistrationForm";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import theme from "./theme";
+import RegistrationForm from "./views/Registration/RegistrationForm";
+import "./styles.scss";
 
-const App: React.FC = () => {
-  return (
-      <Router>
-        <Routes>
-          <Route path="/" element={<RegistrationForm />} />
-        </Routes>
-      </Router>
-  );
-};
+function App() {
+    return (
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <RegistrationForm />
+        </ThemeProvider>
+    );
+}
 
 export default App;
