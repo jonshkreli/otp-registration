@@ -1,7 +1,7 @@
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "./theme";
 import RegistrationForm from "./views/Registration/RegistrationForm";
-import "./styles.scss";
+import "./styles/styles.scss";
 
 function App() {
     return (

@@ -1,0 +1,36 @@
+@import "../../../styles/styles.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 10px;
+  flex-direction: column;
+}
+
+.row1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  font-family: $font-big-caslon;
+  font-size: 32px;
+  font-weight: bold;
+  color: $color-7;
+}
+
+.stepIndicator {
+  font-family: $font-avenir-lt-std;
+  font-size: 18px;
+  color: $color-7;
+}
+
+.description {
+  font-family: $font-avenir-lt-std;
+  font-size: 14px;
+  color: $color-3;
+  margin-top: 5px;
+}

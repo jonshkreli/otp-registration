@@ -7,11 +7,22 @@ import {
     VerifyOTPRequestModel,
     VerifyOTPResponseModel,
 } from "../models/Auth.model";
-import {FORGOT_PASSWORD_ENDPOINT, REGISTER_ENDPOINT, SEND_OTP_ENDPOINT, VERIFY_OTP_ENDPOINT} from "../constants/urls";
+import {
+    FORGOT_PASSWORD_ENDPOINT,
+    REGISTER_ENDPOINT,
+    REGISTER_ENDPOINT_ERROR,
+    SEND_OTP_ENDPOINT,
+    VERIFY_OTP_ENDPOINT
+} from "../constants/urls";
 
 export const registerUser = async (data: RegistrationRequestModel): Promise<RegistrationResponseModel> => {
-    const response = await axios.post<RegistrationResponseModel>(REGISTER_ENDPOINT, data);
-    return response.data;
+    if(data.residenceCountry !== "AE") {
+        const response = await axios.post<RegistrationResponseModel>(REGISTER_ENDPOINT_ERROR, data);
+        return response.data;
+    } else {
+        const response = await axios.post<RegistrationResponseModel>(REGISTER_ENDPOINT, data);
+        return response.data;
+    }
 };
 
 export const sendOTP = async (data: SendOTPRequestModel): Promise<SendOTPResponseModel> => {

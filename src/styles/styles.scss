@@ -1,0 +1,78 @@
+// Colors
+$primary-color: #1E3A34;
+$secondary-color: #f9f9f9;
+$background-color: #F8F8F8;
+$border-color: #D1D5DB;
+$text-color: #333;
+$input-bg: #FFF;
+$font-family: "Inter", sans-serif;
+
+// Typography
+$title-font: "Arial", sans-serif;
+$subtitle-font: "Roboto", sans-serif;
+
+$color-1: rgba(0,0,0,1);
+$color-2: rgba(0,111,98,1);
+$color-3: rgba(153,153,153,1);
+$color-4: rgba(174,169,180,1);
+$color-5: rgba(179,38,30,1);
+$color-6: rgba(255,255,255,1);
+$color-7: rgba(29,31,34,1);
+$color-8: rgba(71,71,71,1);
+$color-9: rgba(86,87,89,1);
+
+$font-actor: 'Actor', sans-serif;
+$font-avenir-lt-std: 'Avenir LT Std', sans-serif;
+$font-big-caslon: 'Big Caslon', sans-serif;
+$font-font-awesome-6-free: 'Font Awesome 6 Free', sans-serif;
+$font-inter: 'Inter', sans-serif;
+
+
+// Global Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+//.container {
+//  max-width: 600px;
+//  margin: 40px auto;
+//  padding: 20px;
+//  background: white;
+//  border-radius: 10px;
+//  //box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+//}
+
+// Section Headers
+.section-header {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  border-bottom: 2px solid $border-color;
+  padding-bottom: 5px;
+  color: $text-color;
+}
+
+// Checkbox Styling
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

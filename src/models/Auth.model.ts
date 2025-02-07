@@ -1,7 +1,7 @@
 export interface RegistrationRequestModel {
     firstName: string;
     lastName: string;
-    gender: "Male" | "Female";
+    gender: "Male" | "Female" | "";
     residenceCountry: string;
     email: string;
     phone: string;

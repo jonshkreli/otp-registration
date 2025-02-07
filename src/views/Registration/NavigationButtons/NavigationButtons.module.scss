@@ -1,0 +1,19 @@
+@import "../../../styles/styles";
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.backButton {
+  border-color: $primary-color;
+  color: $primary-color;
+}
+
+.nextButton {
+  background-color: $primary-color;
+  color: white;
+}
