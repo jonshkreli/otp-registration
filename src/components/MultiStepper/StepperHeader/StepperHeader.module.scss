@@ -6,6 +6,7 @@
   width: 100%;
   padding-bottom: 10px;
   flex-direction: column;
+  margin-bottom: 2em;
 }
 
 .row1 {
@@ -13,24 +14,24 @@
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 1em;
 }
 
 .title {
   font-family: $font-big-caslon;
   font-size: 32px;
-  font-weight: bold;
-  color: $color-7;
+  color: $header-color;
 }
 
 .stepIndicator {
-  font-family: $font-avenir-lt-std;
-  font-size: 18px;
-  color: $color-7;
+  font-family: $font-big-caslon;
+  font-size: 24px;
+  color: $header-color;
 }
 
 .description {
   font-family: $font-avenir-lt-std;
-  font-size: 14px;
-  color: $color-3;
+  font-size: 15.5px;
+  color: $normal-text-color;
   margin-top: 5px;
 }

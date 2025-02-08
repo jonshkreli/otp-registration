@@ -1,25 +1,24 @@
 // Colors
-$primary-color: #1E3A34;
+$primary-action-color: #006f62;
 $secondary-color: #f9f9f9;
+$white-color: #FFF;
+$black-color: #000;
 $background-color: #F8F8F8;
 $border-color: #D1D5DB;
+
+
 $text-color: #333;
-$input-bg: #FFF;
-$font-family: "Inter", sans-serif;
+$input-bg: $white-color;
+$input-special-border: #5A3A27;
+$card-bg: $white-color;
+$normal-text-color: $black-color;
+$header-color: #1d1f22;
+$error-color: #b3261e;
+$secondary-text-color: #667085;
 
 // Typography
 $title-font: "Arial", sans-serif;
 $subtitle-font: "Roboto", sans-serif;
-
-$color-1: rgba(0,0,0,1);
-$color-2: rgba(0,111,98,1);
-$color-3: rgba(153,153,153,1);
-$color-4: rgba(174,169,180,1);
-$color-5: rgba(179,38,30,1);
-$color-6: rgba(255,255,255,1);
-$color-7: rgba(29,31,34,1);
-$color-8: rgba(71,71,71,1);
-$color-9: rgba(86,87,89,1);
 
 $font-actor: 'Actor', sans-serif;
 $font-avenir-lt-std: 'Avenir LT Std', sans-serif;
@@ -27,6 +26,7 @@ $font-big-caslon: 'Big Caslon', sans-serif;
 $font-font-awesome-6-free: 'Font Awesome 6 Free', sans-serif;
 $font-inter: 'Inter', sans-serif;
 
+$title-font-size: 37px;
 
 // Global Reset
 * {
@@ -36,19 +36,9 @@ $font-inter: 'Inter', sans-serif;
 }
 
 body {
-  font-family: $font-family;
   background-color: $background-color;
   color: $text-color;
 }
-
-//.container {
-//  max-width: 600px;
-//  margin: 40px auto;
-//  padding: 20px;
-//  background: white;
-//  border-radius: 10px;
-//  //box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-//}
 
 // Section Headers
 .section-header {
@@ -67,7 +57,7 @@ body {
   margin: 10px 0;
 
   a {
-    color: $primary-color;
+    color: $primary-action-color;
     text-decoration: none;
     font-weight: 500;
 
