@@ -1,0 +1,55 @@
+@import "../../styles/styles.scss";
+
+.wyTextFieldContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.labelContainer {
+  display: flex;
+  align-items: center;
+  font-family: $font-big-caslon;
+  font-size: 16px;
+  color: $header-color;
+  font-weight: 500;
+  margin-bottom: 5px;
+
+  .required {
+    color: $error-color;
+    margin-left: 2px;
+  }
+
+  .infoIcon {
+    margin-left: auto;
+    font-size: 14px;
+    color: $border-color;
+    cursor: pointer;
+  }
+}
+
+.inputField {
+  width: 100%;
+  background-color: $input-bg;
+  border-radius: 5px;
+
+  .MuiOutlinedInput-root {
+    fieldset {
+      border-color: $border-color;
+    }
+
+    &:hover fieldset {
+      border-color: $header-color;
+    }
+
+    &.Mui-focused fieldset {
+      border-color: $header-color;
+    }
+
+    input::placeholder {
+      color: $secondary-text-color;
+      font-size: 14px;
+      opacity: 1;
+    }
+  }
+}

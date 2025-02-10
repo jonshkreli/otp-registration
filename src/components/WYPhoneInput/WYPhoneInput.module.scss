@@ -1,0 +1,42 @@
+@import "../../styles/styles.scss";
+
+.phoneInputContainer {
+  position: relative;
+  width: 100%;
+}
+
+.phoneField {
+  width: 100%;
+  background: $input-bg;
+  font-size: 16px;
+  font-family: $font-avenir-lt-std;
+  color: $text-color;
+  padding-left: 50px;
+
+  &:focus {
+    border-color: $primary-action-color;
+  }
+}
+
+.flagButton {
+  position: absolute;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.flagIcon {
+  width: 28px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.countrySelectContainer {
+  position: absolute;
+  margin-top: 5px;
+  left: 0;
+  width: 100%;
+  background: $input-bg;
+  z-index: 10;
+}

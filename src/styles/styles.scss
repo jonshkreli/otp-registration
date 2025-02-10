@@ -66,3 +66,28 @@ body {
     }
   }
 }
+
+.WYPhoneInput {
+  input.form-control {
+    width: 100%;
+    height: 100%;
+  }
+  .flag-dropdown {
+    background: unset;
+    border: unset;
+
+    .selected-flag {
+      padding: 0 0 0 12px;
+
+      &:hover {
+        background: unset;
+      }
+
+      .flag {
+        //width: 28px;
+        //height: 20px;
+        //top: 40%;
+      }
+    }
+  }
+}
