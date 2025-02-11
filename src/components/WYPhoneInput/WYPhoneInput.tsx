@@ -15,7 +15,7 @@ interface WYPhoneInputProps {
 }
 
 const WYPhoneInput: React.FC<WYPhoneInputProps> = ({ labelText, name, required, value, onChange, tooltipText }) => {
-    const [selectedCountry, setSelectedCountry] = useState<Country | null>(countriesFlags.find(c => c.code === (value)) || countriesFlags[0]); // 🇦🇪 Default: UAE
+    const [selectedCountry, setSelectedCountry] = useState<Country | null>(countriesFlags.find(c => c.value === (value)) || countriesFlags[0]); // 🇦🇪 Default: UAE
     const [showCountrySelect, setShowCountrySelect] = useState(false);
 
     useEffect(() => {
@@ -83,7 +83,7 @@ const WYPhoneInput: React.FC<WYPhoneInputProps> = ({ labelText, name, required, 
                         onChange={(_, newValue) => handleCountryChange(newValue)}
                         open={showCountrySelect}
                         renderOption={(props, option) => (
-                            <li {...props} key={option.code}>
+                            <li {...props} key={option.value}>
                                 <img src={option.flag} alt="" style={{ width: 24, height: 16, marginRight: 8 }} />
                                 {option.label} (+{option.phone})
                             </li>
