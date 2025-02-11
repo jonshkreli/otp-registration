@@ -1,8 +1,6 @@
 @import "../styles/styles.scss";
 
 .errorText {
-  color: $error-color;
-  font-size: 14px;
-  margin-top: 4px;
-  font-family: $font-avenir-lt-std;
+  color: $error-color !important;
+  font-family: $font-avenir-lt-std !important;
 }

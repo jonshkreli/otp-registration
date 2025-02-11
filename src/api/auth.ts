@@ -11,7 +11,7 @@ import {
     FORGOT_PASSWORD_ENDPOINT,
     REGISTER_ENDPOINT,
     REGISTER_ENDPOINT_ERROR,
-    SEND_OTP_ENDPOINT,
+    SEND_OTP_ENDPOINT, SEND_OTP_ENDPOINT_ERROR,
     VERIFY_OTP_ENDPOINT
 } from "../constants/urls";
 
@@ -26,8 +26,13 @@ export const registerUser = async (data: RegistrationRequestModel): Promise<Regi
 };
 
 export const sendOTP = async (data: SendOTPRequestModel): Promise<SendOTPResponseModel> => {
-    const response = await axios.post<SendOTPResponseModel>(SEND_OTP_ENDPOINT, data);
-    return response.data;
+    if (data.phone === "123456789") {
+        const response = await axios.post<SendOTPResponseModel>(SEND_OTP_ENDPOINT_ERROR, data);
+        return response.data;
+    } else {
+        const response = await axios.post<SendOTPResponseModel>(SEND_OTP_ENDPOINT, data);
+        return response.data;
+    }
 };
 
 export const verifyOTP = async (data: VerifyOTPRequestModel): Promise<VerifyOTPResponseModel> => {

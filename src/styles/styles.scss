@@ -27,6 +27,14 @@ $font-font-awesome-6-free: 'Font Awesome 6 Free', sans-serif;
 $font-inter: 'Inter', sans-serif;
 
 $title-font-size: 37px;
+$big-input-text-size: 48px;
+
+@mixin big-input-text-style {
+  font-size: $big-input-text-size;
+  font-family: $font-avenir-lt-std;
+  color: $input-special-border;
+}
+
 
 // Global Reset
 * {
@@ -67,27 +75,3 @@ body {
   }
 }
 
-.WYPhoneInput {
-  input.form-control {
-    width: 100%;
-    height: 100%;
-  }
-  .flag-dropdown {
-    background: unset;
-    border: unset;
-
-    .selected-flag {
-      padding: 0 0 0 12px;
-
-      &:hover {
-        background: unset;
-      }
-
-      .flag {
-        //width: 28px;
-        //height: 20px;
-        //top: 40%;
-      }
-    }
-  }
-}

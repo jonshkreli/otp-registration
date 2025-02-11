@@ -1,4 +1,5 @@
 import {MultiStepperProps, StepConfig} from "../components/MultiStepper/MultiStepper";
+import {RegistrationRequestModel} from "../models/Auth.model";
 
 
 export const registrationSteps: StepConfig[] = [
@@ -18,3 +19,13 @@ export const registrationSteps: StepConfig[] = [
         description: "Review and confirm your details.",
     },
 ];
+
+export const emptyUserRegistrationValues: RegistrationRequestModel = {
+    firstName: "",
+    lastName: "",
+    gender: "",
+    residenceCountry: "",
+    email: "",
+    phone: "",
+    agreeToTerms: false,
+}

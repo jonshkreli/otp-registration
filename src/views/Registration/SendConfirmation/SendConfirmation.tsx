@@ -1,17 +1,46 @@
 import React, { useState } from "react";
-import { Box, Button, FormControl, RadioGroup, Typography } from "@mui/material";
+import { Box, FormControl, RadioGroup, Typography, CircularProgress } from "@mui/material";
 import WYRadio from "../../../components/WYRadio/WYRadio";
-import WYButton from "../../../components/WYButton/WYButton";
 import styles from "./SendConfirmation.module.scss";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
+import { sendOTP } from "../../../api/auth";
+import {RegistrationRequestModel, SendOTPRequestModel} from "../../../models/Auth.model";
+import FormErrorText from "../../../components/FormErrorText";
 
 interface SendConfirmationProps {
-    nextStep: () => void;
+    nextStep: ({userData, otpRequestData}: {userData?: RegistrationRequestModel,otpRequestData?: SendOTPRequestModel}) => void;
     prevStep: () => void;
+    email: string;
+    phone: string;
 }
 
-const SendConfirmation: React.FC<SendConfirmationProps> = ({ nextStep, prevStep }) => {
-    const [otpMethod, setOtpMethod] = useState("email");
+const SendConfirmation: React.FC<SendConfirmationProps> = ({ nextStep, prevStep, email, phone }) => {
+    const [otpMethod, setOtpMethod] = useState<"phone" | "email">("email");
+    const [errorMessage, setErrorMessage] = useState<string | undefined>();
+    const [loading, setLoading] = useState(false);
+
+    const handleSendOTP = async () => {
+        setLoading(true);
+        setErrorMessage(undefined);
+
+        try {
+            const requestData: SendOTPRequestModel = {
+                phone: otpMethod === "phone" ? phone : undefined,
+                email: otpMethod === "email" ? email : undefined,
+            };
+
+            const response = await sendOTP(requestData); // Call API to send OTP
+            if(!response.otpSent) {
+                setErrorMessage(response.message);
+            } else {
+                nextStep({otpRequestData: requestData}); // Proceed to the next step ONLY if OTP request succeeds
+            }
+        } catch (error) {
+            setErrorMessage("An error occurred.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <Box className={styles.container}>
@@ -26,7 +55,7 @@ const SendConfirmation: React.FC<SendConfirmationProps> = ({ nextStep, prevStep 
                 <FormControl component="fieldset">
                     <RadioGroup
                         value={otpMethod}
-                        onChange={(e) => setOtpMethod(e.target.value)}
+                        onChange={(e) => setOtpMethod(e.target.value as "phone" | "email")}
                         className={styles.radioGroup}
                     >
                         <WYRadio value="phone" label="Send to Phone" />
@@ -35,7 +64,15 @@ const SendConfirmation: React.FC<SendConfirmationProps> = ({ nextStep, prevStep 
                 </FormControl>
             </Box>
 
-<NavigationButtons nextLabel={"Next"} backLabel={"Back"} nextStep={nextStep} prevStep={prevStep}/>
+            <FormErrorText error={errorMessage} />
+
+            {loading && <CircularProgress size={20} color="inherit" />}
+            <NavigationButtons
+                nextLabel={"Send Code"}
+                backLabel="Back"
+                nextStep={handleSendOTP}
+                prevStep={prevStep}
+            />
         </Box>
     );
 };

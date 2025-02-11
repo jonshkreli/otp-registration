@@ -1,31 +1,37 @@
 ﻿import React from "react";
 import { TextField, TextFieldProps, Tooltip } from "@mui/material";
 import { InfoOutlined } from "@mui/icons-material";
+import clsx from "clsx";
 import styles from "./WYTextField.module.scss";
 
 type WYTextFieldProps = TextFieldProps & {
-    labelText: string;
+    labelText?: string;
     required?: boolean;
     tooltipText?: string;
     placeholder?: string;
+    otpStyle?: boolean
 };
 
-const WYTextField: React.FC<WYTextFieldProps> = ({ labelText, required, tooltipText, placeholder, ...props }) => {
+const WYTextField: React.FC<WYTextFieldProps> = ({ labelText, required, tooltipText, placeholder, otpStyle, ...props }) => {
+    console.log(clsx(styles.inputField, { [styles.otpInput]: otpStyle }), otpStyle)
+
     return (
         <div className={styles.wyTextFieldContainer}>
             {/* Label with Required Indicator & Tooltip */}
-            <div className={styles.labelContainer}>
+            {labelText && <div className={styles.labelContainer}>
                 <span>{labelText} {required && <span className={styles.required}>*</span>}</span>
                 {tooltipText && (
                     <Tooltip title={tooltipText} arrow>
-                        <InfoOutlined className={styles.infoIcon} />
+                        <InfoOutlined className={styles.infoIcon}/>
                     </Tooltip>
                 )}
-            </div>
+            </div>}
 
             {/* Input Field with Placeholder */}
             <TextField
-                className={styles.inputField}
+                InputProps={{
+                    className: clsx(styles.inputField, { [styles.otpInput]: otpStyle })
+                }}
                 fullWidth
                 placeholder={placeholder}
                 {...props}

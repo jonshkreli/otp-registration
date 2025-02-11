@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { RegistrationRequestModel, RegistrationResponseModel } from "../../../models/Auth.model";
+import {RegistrationRequestModel, RegistrationResponseModel, SendOTPRequestModel} from "../../../models/Auth.model";
 import WYTextField from "../../../components/WYTextField/WYTextField";
 import WYSelect from "../../../components/WYSelect/WYSelect";
 import WYCheckbox from "../../../components/WYCheckbox/WYCheckbox";
@@ -13,9 +13,10 @@ import styles from "./UserDetails.module.scss";
 import countriesFlags from "../../../constants/countiresFlags";
 import { GENDERS } from "../../../constants/other";
 import FormErrorText from "../../../components/FormErrorText";
+import {emptyUserRegistrationValues} from "../../../constants/registration";
 
 interface UserDetailsProps {
-    nextStep: () => void;
+    nextStep: ({userData, otpRequestData}: {userData?: RegistrationRequestModel,otpRequestData?: SendOTPRequestModel}) => void;
 }
 
 const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
@@ -23,15 +24,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
     const [loading, setLoading] = useState<boolean>(false);
 
     const formik = useFormik<RegistrationRequestModel>({
-        initialValues: {
-            firstName: "",
-            lastName: "",
-            gender: "",
-            residenceCountry: "",
-            email: "",
-            phone: "",
-            agreeToTerms: false,
-        },
+        initialValues: emptyUserRegistrationValues,
         validationSchema: Yup.object({
             firstName: Yup.string().required("First Name is required"),
             lastName: Yup.string().required("Last Name is required"),
@@ -52,7 +45,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
                 const result: RegistrationResponseModel = await registerUser(values);
                 console.log("API Response:", result);
                 if (result.userId) {
-                    nextStep();
+                    nextStep({userData: values});
                 } else {
                     setErrorMessage(result.message || "Registration failed. Please try again.");
                 }

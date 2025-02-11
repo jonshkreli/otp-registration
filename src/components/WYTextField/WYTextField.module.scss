@@ -53,3 +53,11 @@
     }
   }
 }
+
+.otpInput > input {
+  text-align: center;
+  width: 80px;
+  height: 80px;
+  @include big-input-text-style;
+}
+
