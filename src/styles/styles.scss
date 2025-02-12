@@ -23,18 +23,20 @@ $secondary-color: #f9f9f9;
 $white-color: #FFF;
 $black-color: #000;
 $background-color: #F8F8F8;
+
 $border-color: #D1D5DB;
 $input-border-color: #E8E9E9;
-
-
 $text-color: #333;
 $input-bg: $white-color;
 $input-special-border: #5A3A27;
 $card-bg: $white-color;
 $normal-text-color: $black-color;
 $header-color: #1d1f22;
+$header-secondary-color: #101828;
 $error-color: #b3261e;
 $secondary-text-color: #667085;
+$description-color: #667085;
+
 
 // Typography
 $title-font: "Arial", sans-serif;
@@ -84,32 +86,5 @@ $normal-input-border: 1px solid $input-border-color;
 body {
   background-color: $background-color;
   color: $text-color;
-}
-
-// Section Headers
-.section-header {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 15px;
-  border-bottom: 2px solid $border-color;
-  padding-bottom: 5px;
-  color: $text-color;
-}
-
-// Checkbox Styling
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-
-  a {
-    color: $primary-action-color;
-    text-decoration: none;
-    font-weight: 500;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 }
 

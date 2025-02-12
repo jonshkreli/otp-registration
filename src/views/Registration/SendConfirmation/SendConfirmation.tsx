@@ -1,21 +1,24 @@
-import React, { useState } from "react";
-import { Box, FormControl, RadioGroup, Typography, CircularProgress } from "@mui/material";
-import WYRadio from "../../../components/WYRadio/WYRadio";
+import React, {useState} from "react";
+import {Box, FormControl, RadioGroup, Typography, CircularProgress} from "@mui/material";
+import WYRadioGroup from "../../../components/WYRadioGroup/WYRadioGroup";
 import styles from "./SendConfirmation.module.scss";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
-import { sendOTP } from "../../../api/auth";
+import {sendOTP} from "../../../api/auth";
 import {RegistrationRequestModel, SendOTPRequestModel} from "../../../models/Auth.model";
 import FormErrorText from "../../../components/FormErrorText";
 import WYSection from "../../../components/WYSection/WYSection";
 
 interface SendConfirmationProps {
-    nextStep: ({userData, otpRequestData}: {userData?: RegistrationRequestModel,otpRequestData?: SendOTPRequestModel}) => void;
+    nextStep: ({userData, otpRequestData}: {
+        userData?: RegistrationRequestModel,
+        otpRequestData?: SendOTPRequestModel
+    }) => void;
     prevStep: () => void;
     email: string;
     phone: string;
 }
 
-const SendConfirmation: React.FC<SendConfirmationProps> = ({ nextStep, prevStep, email, phone }) => {
+const SendConfirmation: React.FC<SendConfirmationProps> = ({nextStep, prevStep, email, phone}) => {
     const [otpMethod, setOtpMethod] = useState<"phone" | "email">("email");
     const [errorMessage, setErrorMessage] = useState<string | undefined>();
     const [loading, setLoading] = useState(false);
@@ -31,7 +34,7 @@ const SendConfirmation: React.FC<SendConfirmationProps> = ({ nextStep, prevStep,
             };
 
             const response = await sendOTP(requestData); // Call API to send OTP
-            if(!response.otpSent) {
+            if (!response.otpSent) {
                 setErrorMessage(response.message);
             } else {
                 nextStep({otpRequestData: requestData}); // Proceed to the next step ONLY if OTP request succeeds
@@ -47,33 +50,31 @@ const SendConfirmation: React.FC<SendConfirmationProps> = ({ nextStep, prevStep,
         <WYSection sectionTitle={"OTP Verification"}>
             <Box className={""}>
                 <Box className={"card-container-style"}>
-                <Typography variant="h6" className={styles.subtitle}>Send Code</Typography>
-                <Typography className={styles.description}>
-                    How would you like to receive the code?
-                </Typography>
+                    <p className={styles.subtitle}>Send Code</p>
+                    <p className={styles.description}>
+                        How would you like to receive the code?
+                    </p>
 
-                <FormControl component="fieldset">
-                    <RadioGroup
+                    <WYRadioGroup
                         value={otpMethod}
                         onChange={(e) => setOtpMethod(e.target.value as "phone" | "email")}
-                        className={styles.radioGroup}
-                    >
-                        <WYRadio value="phone" label="Send to Phone" />
-                        <WYRadio value="email" label="Send to Email" />
-                    </RadioGroup>
-                </FormControl>
+                        options={[
+                            { value: "phone", label: "Send to Phone" },
+                            { value: "email", label: "Send to Email" },
+                        ]}
+                    />
+                </Box>
+
+                <FormErrorText error={errorMessage}/>
+
+                {loading && <CircularProgress size={20} color="inherit"/>}
+                <NavigationButtons
+                    nextLabel={"Next"}
+                    backLabel="Back"
+                    nextStep={handleSendOTP}
+                    prevStep={prevStep}
+                />
             </Box>
-
-            <FormErrorText error={errorMessage} />
-
-            {loading && <CircularProgress size={20} color="inherit" />}
-            <NavigationButtons
-                nextLabel={"Next"}
-                backLabel="Back"
-                nextStep={handleSendOTP}
-                prevStep={prevStep}
-            />
-        </Box>
         </WYSection>
     );
 };

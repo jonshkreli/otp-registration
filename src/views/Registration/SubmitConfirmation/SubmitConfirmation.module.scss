@@ -17,13 +17,17 @@
 }
 
 .subtitle {
-  font-weight: 600;
+  font-family: $font-big-caslon;
+  font-weight: 500;
+  font-size: 20px;
   margin-bottom: 8px;
-  color: $header-color;
-  font-family: $font-avenir-lt-std;
+  color: $header-secondary-color;
 }
 
 .description {
+  font-family: $font-actor;
+  font-weight: 400;
+  font-size: 16px;
   color: $secondary-text-color;
   margin-bottom: 16px;
 }
@@ -46,8 +50,15 @@
 }
 
 .resendText {
+  font-family: $font-avenir-lt-std;
+  font-weight: 600;
+  font-size: 16px;
   color: $secondary-text-color;
   margin-top: 10px;
+
+  a{
+    color: inherit;
+  }
 }
 
 .buttonContainer {

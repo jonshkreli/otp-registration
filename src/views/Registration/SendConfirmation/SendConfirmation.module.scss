@@ -17,21 +17,28 @@
 }
 
 .subtitle {
-  font-weight: 600;
+  font-weight: 500;
+  color: $header-secondary-color;
+  font-family: $font-big-caslon;
+  font-size: 20px;
   margin-bottom: 8px;
-  color: $text-color;
-  font-family: $subtitle-font;
 }
 
 .description {
-  color: $text-color;
+  color: $description-color;
+  font-family: $font-avenir-lt-std;
+  font-size: 16px;
+  font-weight: 600;
   margin-bottom: 16px;
 }
 
 .radioGroup {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  gap: 16px;
+
+
 }
 
 .buttonContainer {

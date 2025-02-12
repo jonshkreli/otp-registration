@@ -58,10 +58,10 @@ const SubmitConfirmation: React.FC<SubmitConfirmationProps> = ({prevStep, nextSt
         <WYSection sectionTitle={"OTP Verification"}>
             <Box className={""}>
                 <Box className={"card-container-style"}>
-                    <Typography variant="h6" className={styles.subtitle}>Please check your {origin}.</Typography>
-                    <Typography className={styles.description}>
-                        We've sent a code to <b>{value}</b>
-                    </Typography>
+                    <p className={styles.subtitle}>Please check your {origin}.</p>
+                    <p className={styles.description}>
+                        We've sent a code to {value}
+                    </p>
 
                     <Box className={styles.otpContainer}>
                         {otp.map((digit, index) => (
@@ -74,9 +74,9 @@ const SubmitConfirmation: React.FC<SubmitConfirmationProps> = ({prevStep, nextSt
                         ))}
                     </Box>
 
-                    <Typography className={styles.resendText}>
-                        Didn’t get a code? <Link onClick={handleSendOTP} href="#">Click to resend.</Link>
-                    </Typography>
+                    <p className={styles.resendText}>
+                        Didn't get a code? <Link onClick={handleSendOTP} href="#">Click to resend.</Link>
+                    </p>
                 </Box>
 
                 <FormErrorText error={errorMessage} />
