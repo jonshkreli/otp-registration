@@ -44,10 +44,15 @@
   }
 }
 
-.otpInput > input {
-  text-align: center;
-  width: 80px;
-  height: 80px;
-  @include big-input-text-style;
+.otpInput {
+  border: 1px solid $input-special-border;
+  border-radius: 8px;
+  & > input {
+    text-align: center;
+    width: 80px;
+    height: 80px;
+    border: none;
+    @include big-input-text-style;
+  }
 }
 
