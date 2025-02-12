@@ -68,6 +68,12 @@ $normal-input-border: 1px solid $input-border-color;
   font-family: Actor, sans-serif;
 }
 
+@mixin normal-button-font {
+  font-family: $font-avenir-lt-std;
+  font-weight: 600;
+  font-size: 16px;
+}
+
 .card-container-style {
   background: $card-bg;
   padding: 2rem;

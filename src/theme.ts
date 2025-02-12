@@ -3,9 +3,6 @@
 const theme = createTheme({
   typography: {
     fontFamily: "inherit",
-    allVariants: {
-      color: "#333",
-    },
   },
   palette: {
     primary: {
@@ -13,10 +10,6 @@ const theme = createTheme({
     },
     background: {
       default: "#F8F8F8",
-    },
-    text: {
-      primary: "#333",
-      secondary: "#555",
     },
   },
 });

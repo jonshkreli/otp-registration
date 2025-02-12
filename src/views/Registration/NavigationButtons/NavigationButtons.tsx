@@ -14,8 +14,8 @@ const SendConfirmation: React.FC<SendConfirmationProps> = ({ prevStep, nextStep,
 
     return (
         <Box className={styles.buttonContainer}>
-            {prevStep && <WYButton onClick={prevStep} variant="outlined" className={styles.backButton}>{backLabel}</WYButton>}
-            {nextStep && <WYButton onClick={nextStep} variant="contained" className={styles.nextButton}>{nextLabel}</WYButton>}
+            {prevStep && <WYButton onClick={prevStep} variant="outlined" >{backLabel}</WYButton>}
+            {nextStep && <WYButton onClick={nextStep} variant="contained" >{nextLabel}</WYButton>}
         </Box>
     );
 };

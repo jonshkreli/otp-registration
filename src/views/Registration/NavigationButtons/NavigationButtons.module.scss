@@ -3,17 +3,7 @@
 .buttonContainer {
   display: flex;
   justify-content: space-between;
-  margin-top: 16px;
+  margin-top: 2rem;
   width: 100%;
-  //max-width: 400px;
-}
-
-.backButton {
-  border-color: $primary-action-color;
-  color: $primary-action-color;
-}
-
-.nextButton {
-  background-color: $primary-action-color;
-  color: white;
+  gap: 40px;
 }
