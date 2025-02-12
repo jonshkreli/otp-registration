@@ -14,6 +14,7 @@ import countriesFlags from "../../../constants/countiresFlags";
 import { GENDERS } from "../../../constants/other";
 import FormErrorText from "../../../components/FormErrorText";
 import {emptyUserRegistrationValues} from "../../../constants/registration";
+import WYSection from "../../../components/WYSection/WYSection";
 
 interface UserDetailsProps {
     nextStep: ({userData, otpRequestData}: {userData?: RegistrationRequestModel,otpRequestData?: SendOTPRequestModel}) => void;
@@ -61,73 +62,76 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
     return (
         <Box className={styles.container}>
             <form onSubmit={formik.handleSubmit} className={styles.formContainer}>
-                <Box display={"flex"} flexWrap={"wrap"} justifyContent={"space-between"}>
-                    <Box className={styles.inputGroup}>
-                        <WYTextField
-                            labelText="First Name"
-                            placeholder="Enter first name"
-                            tooltipText="Your name"
-                            required
-                            {...formik.getFieldProps("firstName")}
-                        />
-                        <FormErrorText error={formik.touched.firstName ? formik.errors.firstName : ""} />
+                <WYSection sectionTitle={"User Details"}>
+                    <Box display={"flex"} flexWrap={"wrap"} justifyContent={"space-between"}>
+                        <Box className={styles.inputGroup}>
+                            <WYTextField
+                                labelText="First Name"
+                                placeholder="Enter first name"
+                                tooltipText="Your name"
+                                required
+                                {...formik.getFieldProps("firstName")}
+                            />
+                            <FormErrorText error={formik.touched.firstName ? formik.errors.firstName : ""} />
+                        </Box>
+
+                        <Box className={styles.inputGroup}>
+                            <WYTextField
+                                labelText="Last Name"
+                                placeholder="Enter last name"
+                                tooltipText="Your name"
+                                required
+                                {...formik.getFieldProps("lastName")}
+                            />
+                            <FormErrorText error={formik.touched.lastName ? formik.errors.lastName : ""} />
+                        </Box>
                     </Box>
 
                     <Box className={styles.inputGroup}>
-                        <WYTextField
-                            labelText="Last Name"
-                            placeholder="Enter last name"
-                            tooltipText="Your name"
+                        <WYSelect
+                            labelText="Gender"
+                            name="gender"
                             required
-                            {...formik.getFieldProps("lastName")}
+                            placeholder="Select gender..."
+                            value={formik.values.gender}
+                            onChange={formik.handleChange}
+                            options={GENDERS}
                         />
-                        <FormErrorText error={formik.touched.lastName ? formik.errors.lastName : ""} />
+                        <FormErrorText error={formik.touched.gender ? formik.errors.gender : ""} />
                     </Box>
-                </Box>
 
-                <Box className={styles.inputGroup}>
-                    <WYSelect
-                        labelText="Gender"
-                        name="gender"
-                        required
-                        placeholder="Select gender..."
-                        value={formik.values.gender}
-                        onChange={formik.handleChange}
-                        options={GENDERS}
-                    />
-                    <FormErrorText error={formik.touched.gender ? formik.errors.gender : ""} />
-                </Box>
+                    <Box className={styles.inputGroup}>
+                        <WYSelect
+                            labelText="Your Residence Country"
+                            name="residenceCountry"
+                            required
+                            placeholder="Select residence country..."
+                            value={formik.values.residenceCountry}
+                            onChange={formik.handleChange}
+                            options={countriesFlags}
+                        />
+                        <FormErrorText error={formik.touched.residenceCountry ? formik.errors.residenceCountry : ""} />
+                    </Box>
 
-                <Box className={styles.inputGroup}>
-                    <WYSelect
-                        labelText="Your Residence Country"
-                        name="residenceCountry"
-                        required
-                        placeholder="Select residence country..."
-                        value={formik.values.residenceCountry}
-                        onChange={formik.handleChange}
-                        options={countriesFlags}
-                    />
-                    <FormErrorText error={formik.touched.residenceCountry ? formik.errors.residenceCountry : ""} />
-                </Box>
+                </WYSection>
 
-                <Typography className={styles.contactDetailsTitle}>Contact Details</Typography>
+                <WYSection sectionTitle={"Contact Details"}>
+                    <Box className={styles.inputGroup}>
+                        <WYTextField labelText="Email" type="email" required {...formik.getFieldProps("email")} />
+                        <FormErrorText error={formik.touched.email ? formik.errors.email : ""} />
+                    </Box>
 
-                <Box className={styles.inputGroup}>
-                    <WYTextField labelText="Email" type="email" required {...formik.getFieldProps("email")} />
-                    <FormErrorText error={formik.touched.email ? formik.errors.email : ""} />
-                </Box>
-
-                <Box className={styles.inputGroup}>
-                    <WYPhoneInput
-                        labelText="Phone Number"
-                        name="phone"
-                        required
-                        value={formik.values.phone}
-                        onChange={(value) => formik.setFieldValue("phone", value)}
-                    />
-                    <FormErrorText error={formik.touched.phone ? formik.errors.phone : ""} />
-                </Box>
+                    <Box className={styles.inputGroup}>
+                        <WYPhoneInput
+                            labelText="Phone Number"
+                            name="phone"
+                            required
+                            value={formik.values.phone}
+                            onChange={(value) => formik.setFieldValue("phone", value)}
+                        />
+                        <FormErrorText error={formik.touched.phone ? formik.errors.phone : ""} />
+                    </Box>
+                </WYSection>
 
                 <Box className={styles.inputGroup}>
                     <WYCheckbox

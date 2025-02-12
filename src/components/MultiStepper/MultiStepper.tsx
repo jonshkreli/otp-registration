@@ -29,10 +29,6 @@ const MultiStepper: React.FC<MultiStepperProps> = ({ pageTitle, stepsDetails, co
 
             <StepperHeader currentStep={activeStep} totalSteps={totalSteps} pageTitle={pageTitle} description={stepsDetails[activeStep-1].description} />
 
-            <Typography className={styles.pageTitle}>
-                {stepsDetails[activeStep-1].title}
-            </Typography>
-
             <Box sx={{ mt: 4 }}>{components[activeStep-1]}</Box>
         </Box>
     );
@@ -40,7 +36,6 @@ const MultiStepper: React.FC<MultiStepperProps> = ({ pageTitle, stepsDetails, co
 
 export interface StepConfig {
     step: number;
-    title: string;
     description: string;
 }
 

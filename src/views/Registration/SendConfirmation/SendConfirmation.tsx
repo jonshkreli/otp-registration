@@ -6,6 +6,7 @@ import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import { sendOTP } from "../../../api/auth";
 import {RegistrationRequestModel, SendOTPRequestModel} from "../../../models/Auth.model";
 import FormErrorText from "../../../components/FormErrorText";
+import WYSection from "../../../components/WYSection/WYSection";
 
 interface SendConfirmationProps {
     nextStep: ({userData, otpRequestData}: {userData?: RegistrationRequestModel,otpRequestData?: SendOTPRequestModel}) => void;
@@ -43,9 +44,8 @@ const SendConfirmation: React.FC<SendConfirmationProps> = ({ nextStep, prevStep,
     };
 
     return (
-        <Box className={styles.container}>
-            <Typography variant="h5" className={styles.title}>OTP Verification</Typography>
-
+        <WYSection sectionTitle={"OTP Verification"}>
+            <Box className={styles.container}>
             <Box className={styles.card}>
                 <Typography variant="h6" className={styles.subtitle}>Send Code</Typography>
                 <Typography className={styles.description}>
@@ -74,6 +74,7 @@ const SendConfirmation: React.FC<SendConfirmationProps> = ({ nextStep, prevStep,
                 prevStep={prevStep}
             />
         </Box>
+        </WYSection>
     );
 };
 

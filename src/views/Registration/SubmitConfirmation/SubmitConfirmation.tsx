@@ -7,6 +7,7 @@ import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import {SendOTPRequestModel} from "../../../models/Auth.model";
 import {sendOTP} from "../../../api/auth";
 import FormErrorText from "../../../components/FormErrorText";
+import WYSection from "../../../components/WYSection/WYSection";
 
 interface SubmitConfirmationProps {
     prevStep: () => void,
@@ -54,36 +55,36 @@ const SubmitConfirmation: React.FC<SubmitConfirmationProps> = ({prevStep, nextSt
     }, [verificationData]);
 
     return (
-        <Box className={styles.container}>
-            <Typography variant="h5" className={styles.title}>OTP Verification</Typography>
+        <WYSection sectionTitle={"OTP Verification"}>
+            <Box className={styles.container}>
+                <Box className={styles.card}>
+                    <Typography variant="h6" className={styles.subtitle}>Please check your {origin}.</Typography>
+                    <Typography className={styles.description}>
+                        We've sent a code to <b>{value}</b>
+                    </Typography>
 
-            <Box className={styles.card}>
-                <Typography variant="h6" className={styles.subtitle}>Please check your {origin}.</Typography>
-                <Typography className={styles.description}>
-                    We've sent a code to <b>{value}</b>
-                </Typography>
+                    <Box className={styles.otpContainer}>
+                        {otp.map((digit, index) => (
+                            <WYTextField
+                                key={index}
+                                value={digit}
+                                onChange={(e) => handleChange(index, e.target.value)}
+                                otpStyle
+                            />
+                        ))}
+                    </Box>
 
-                <Box className={styles.otpContainer}>
-                    {otp.map((digit, index) => (
-                        <WYTextField
-                            key={index}
-                            value={digit}
-                            onChange={(e) => handleChange(index, e.target.value)}
-                            otpStyle
-                        />
-                    ))}
+                    <Typography className={styles.resendText}>
+                        Didn’t get a code? <Link onClick={handleSendOTP} href="#">Click to resend.</Link>
+                    </Typography>
                 </Box>
 
-                <Typography className={styles.resendText}>
-                    Didn’t get a code? <Link onClick={handleSendOTP} href="#">Click to resend.</Link>
-                </Typography>
+                <FormErrorText error={errorMessage} />
+                {loading && <CircularProgress size={20} color="inherit" />}
+
+                <NavigationButtons nextLabel={"Next"} backLabel={"Back"} nextStep={nextStep} prevStep={prevStep}/>
             </Box>
-
-            <FormErrorText error={errorMessage} />
-            {loading && <CircularProgress size={20} color="inherit" />}
-
-            <NavigationButtons nextLabel={"Next"} backLabel={"Back"} nextStep={nextStep} prevStep={prevStep}/>
-        </Box>
+        </WYSection>
     );
 };
 

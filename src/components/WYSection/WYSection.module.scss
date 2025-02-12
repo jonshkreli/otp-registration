@@ -1,0 +1,19 @@
+@import "../../styles/styles.scss";
+
+.sectionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-family: $font-big-caslon;
+  font-size: 22px;
+  color: $header-color;
+  border-bottom: 2px black solid;
+  width: fit-content;
+}
+
+.content {
+  margin-top: 10px;
+}
