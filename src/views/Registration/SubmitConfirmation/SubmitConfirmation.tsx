@@ -1,34 +1,68 @@
-import React, {useCallback, useMemo, useState} from "react";
-import {Box, Typography, Link, CircularProgress} from "@mui/material";
-import WYButton from "../../../components/WYButton/WYButton";
+import React, { useCallback, useMemo, useRef, useState } from "react";
+import { Box, Typography, Link, CircularProgress } from "@mui/material";
 import WYTextField from "../../../components/WYTextField/WYTextField";
 import styles from "./SubmitConfirmation.module.scss";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
-import {SendOTPRequestModel} from "../../../models/Auth.model";
-import {sendOTP} from "../../../api/auth";
+import { SendOTPRequestModel } from "../../../models/Auth.model";
+import { sendOTP } from "../../../api/auth";
 import FormErrorText from "../../../components/FormErrorText";
 import WYSection from "../../../components/WYSection/WYSection";
 
 interface SubmitConfirmationProps {
-    prevStep: () => void,
-    nextStep: () => void,
-    verificationData: SendOTPRequestModel
+    prevStep: () => void;
+    nextStep: () => void;
+    verificationData: SendOTPRequestModel;
 }
 
-const SubmitConfirmation: React.FC<SubmitConfirmationProps> = ({prevStep, nextStep, verificationData}) => {
+const SubmitConfirmation: React.FC<SubmitConfirmationProps> = ({
+                                                                   prevStep,
+                                                                   nextStep,
+                                                                   verificationData,
+                                                               }) => {
     const [otp, setOtp] = useState(["", "", "", ""]);
     const [errorMessage, setErrorMessage] = useState<string | undefined>();
     const [loading, setLoading] = useState(false);
 
+    const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+    /** ✅ Automatically shifts focus when typing or backspacing */
     const handleChange = (index: number, value: string) => {
-        if (value.length > 1) return;
+        console.log("value", value);
+        if (!value.match(/^[0-9]$/)) return; // Only allow single digit
+
         const newOtp = [...otp];
         newOtp[index] = value;
         setOtp(newOtp);
+
+        // Move to next field
+        if (value && index < otp.length - 1) {
+            inputRefs.current[index + 1]?.focus();
+        }
     };
 
-    // extract key and value from verification data
-    const {origin, value} = useMemo(() => {
+    /** ✅ Handles backspace */
+    const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLDivElement>) => {
+        console.log(index, e.key)
+        if (e.key === "Backspace") {
+            const newOtp = [...otp];
+            newOtp[index] = "";
+            setOtp(newOtp);
+
+            // Move to previous field
+            if (index > 0) {
+                inputRefs.current[index - 1]?.focus();
+            }
+        } else if(otp[index]) {
+            // go type in the next input
+            if (index < otp.length - 1) {
+                // inputRefs.current[index + 1]?.focus();
+                handleChange(index + 1, e.key);
+            }
+        }
+    };
+
+    // Extract key and value from verification data
+    const { origin, value } = useMemo(() => {
         const { email, phone } = verificationData;
 
         return email
@@ -56,33 +90,43 @@ const SubmitConfirmation: React.FC<SubmitConfirmationProps> = ({prevStep, nextSt
 
     return (
         <WYSection sectionTitle={"OTP Verification"}>
-            <Box className={""}>
+            <Box>
                 <Box className={"card-container-style"}>
-                    <p className={styles.subtitle}>Please check your {origin}.</p>
-                    <p className={styles.description}>
-                        We've sent a code to {value}
-                    </p>
+                    <Typography className={styles.subtitle}>Please check your {origin}.</Typography>
+                    <Typography className={styles.description}>
+                        We've sent a code to <b>{value}</b>
+                    </Typography>
 
                     <Box className={styles.otpContainer}>
                         {otp.map((digit, index) => (
                             <WYTextField
                                 key={index}
                                 value={digit}
+                                inputRef={(el) => (inputRefs.current[index] = el)}
                                 onChange={(e) => handleChange(index, e.target.value)}
+                                onKeyDown={(e) => handleKeyDown(index, e)}
                                 otpStyle
                             />
                         ))}
                     </Box>
 
-                    <p className={styles.resendText}>
-                        Didn't get a code? <Link onClick={handleSendOTP} href="#">Click to resend.</Link>
-                    </p>
+                    <Typography className={styles.resendText}>
+                        Didn’t get a code? <Link onClick={handleSendOTP} href="#">Click to resend.</Link>
+                    </Typography>
                 </Box>
 
                 <FormErrorText error={errorMessage} />
                 {loading && <CircularProgress size={20} color="inherit" />}
 
-                <NavigationButtons nextLabel={"Next"} backLabel={"Back"} nextStep={nextStep} prevStep={prevStep}/>
+                <NavigationButtons
+                    nextLabel={"Next"}
+                    backLabel={"Back"}
+                    nextStep={() => {
+                        //if we have other page
+                        //nextStep()
+                    }}
+                    prevStep={prevStep}
+                />
             </Box>
         </WYSection>
     );

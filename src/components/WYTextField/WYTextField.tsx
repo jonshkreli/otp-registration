@@ -13,8 +13,6 @@ type WYTextFieldProps = TextFieldProps & {
 };
 
 const WYTextField: React.FC<WYTextFieldProps> = ({ labelText, required, tooltipText, placeholder, otpStyle, ...props }) => {
-    console.log(clsx(styles.inputField, { [styles.otpInput]: otpStyle }), otpStyle)
-
     return (
         <div className={styles.wyTextFieldContainer}>
             {/* Label with Required Indicator & Tooltip */}
@@ -30,7 +28,10 @@ const WYTextField: React.FC<WYTextFieldProps> = ({ labelText, required, tooltipT
             {/* Input Field with Placeholder */}
             <TextField
                 InputProps={{
-                    className: clsx(styles.inputField, { [styles.otpInput]: otpStyle })
+                    className: clsx(styles.inputField, { [styles.otpInput]: otpStyle }),
+                }}
+                inputProps={{
+                    maxLength: otpStyle ? 1 : undefined,
                 }}
                 fullWidth
                 placeholder={placeholder}
