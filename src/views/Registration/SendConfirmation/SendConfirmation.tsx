@@ -45,8 +45,8 @@ const SendConfirmation: React.FC<SendConfirmationProps> = ({ nextStep, prevStep,
 
     return (
         <WYSection sectionTitle={"OTP Verification"}>
-            <Box className={styles.container}>
-            <Box className={styles.card}>
+            <Box className={""}>
+                <Box className={"card-container-style"}>
                 <Typography variant="h6" className={styles.subtitle}>Send Code</Typography>
                 <Typography className={styles.description}>
                     How would you like to receive the code?
@@ -68,7 +68,7 @@ const SendConfirmation: React.FC<SendConfirmationProps> = ({ nextStep, prevStep,
 
             {loading && <CircularProgress size={20} color="inherit" />}
             <NavigationButtons
-                nextLabel={"Send Code"}
+                nextLabel={"Next"}
                 backLabel="Back"
                 nextStep={handleSendOTP}
                 prevStep={prevStep}

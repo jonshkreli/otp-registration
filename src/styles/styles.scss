@@ -1,3 +1,22 @@
+@font-face {
+  font-family: "Big Caslon";
+  src: url("../assets/fonts/Big Caslon Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir LT Std";
+  src: url("../assets/fonts/Avenir LT Std 65 Medium.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Actor";
+  src: url("../assets/fonts/Actor-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 // Colors
 $primary-action-color: #006f62;
 $secondary-color: #f9f9f9;
@@ -5,6 +24,7 @@ $white-color: #FFF;
 $black-color: #000;
 $background-color: #F8F8F8;
 $border-color: #D1D5DB;
+$input-border-color: #E8E9E9;
 
 
 $text-color: #333;
@@ -33,6 +53,24 @@ $big-input-text-size: 48px;
   font-size: $big-input-text-size;
   font-family: $font-avenir-lt-std;
   color: $input-special-border;
+}
+
+$normal-input-border: 1px solid $input-border-color;
+
+@mixin normal-input-style {
+  border: $normal-input-border;
+  width: 100%;
+  font-size: 16px;
+  background-color: $input-bg;
+  border-radius: 5px;
+  font-family: Actor, sans-serif;
+}
+
+.card-container-style {
+  background: $card-bg;
+  padding: 2rem;
+  border-radius: 4px;
+  text-align: center;
 }
 
 

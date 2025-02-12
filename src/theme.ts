@@ -2,7 +2,7 @@
 
 const theme = createTheme({
   typography: {
-    fontFamily: "'Inter', sans-serif",
+    fontFamily: "inherit",
     allVariants: {
       color: "#333",
     },

@@ -10,7 +10,7 @@ interface WYSectionProps {
 const WYSection: React.FC<WYSectionProps> = ({ sectionTitle, children }) => {
     return (
         <Box className={styles.sectionContainer}>
-            <Typography className={styles.sectionTitle}>{sectionTitle}</Typography>
+            <p className={styles.sectionTitle}>{sectionTitle}</p>
             <Box className={styles.content}>{children}</Box>
         </Box>
     );

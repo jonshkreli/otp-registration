@@ -13,14 +13,14 @@ const StepperHeader: React.FC<StepperHeaderProps> = ({ currentStep, totalSteps, 
     return (
         <div className={styles.container}>
             <div className={styles.row1}>
-                <Typography variant="h4" className={styles.title}>{pageTitle}</Typography>
-                <Typography variant="body1" className={styles.stepIndicator}>
+                <p className={styles.title}>{pageTitle}</p>
+                <p className={styles.stepIndicator}>
                     Step {currentStep} of {totalSteps}
-                </Typography>
+                </p>
             </div>
-            <Typography variant="body2" className={styles.description}>
+            <p className={styles.description}>
                 {description}
-            </Typography>
+            </p>
         </div>
     );
 };

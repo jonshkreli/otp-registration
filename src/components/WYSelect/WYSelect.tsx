@@ -30,7 +30,7 @@ const WYSelect: React.FC<WYSelectProps> = ({
             </div>
 
             {/* Select Input */}
-            <Select {...props} value={value || ""} displayEmpty>
+            <Select {...props} value={value || ""} displayEmpty className={styles.inputField}>
                 {placeholder && (
                     <MenuItem value="" disabled>
                         {placeholder}

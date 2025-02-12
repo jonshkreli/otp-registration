@@ -56,8 +56,8 @@ const SubmitConfirmation: React.FC<SubmitConfirmationProps> = ({prevStep, nextSt
 
     return (
         <WYSection sectionTitle={"OTP Verification"}>
-            <Box className={styles.container}>
-                <Box className={styles.card}>
+            <Box className={""}>
+                <Box className={"card-container-style"}>
                     <Typography variant="h6" className={styles.subtitle}>Please check your {origin}.</Typography>
                     <Typography className={styles.description}>
                         We've sent a code to <b>{value}</b>

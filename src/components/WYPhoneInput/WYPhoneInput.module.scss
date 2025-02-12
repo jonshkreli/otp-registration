@@ -6,16 +6,17 @@
 }
 
 .phoneField {
-  width: 100%;
+  @include normal-input-style;
   background: $input-bg;
-  font-size: 16px;
   font-family: $font-avenir-lt-std;
   color: $text-color;
   padding-left: 50px;
+  border: none;
 
   &:focus {
-    border-color: $primary-action-color;
+    border: none;
   }
+
 }
 
 .flagButton {
@@ -24,6 +25,7 @@
   background: none;
   border: none;
   cursor: pointer;
+  //left: -40px;
 }
 
 .flagIcon {
