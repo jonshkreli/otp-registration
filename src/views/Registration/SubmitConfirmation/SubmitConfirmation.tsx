@@ -1,10 +1,12 @@
-import React, {useMemo, useState} from "react";
-import {Box, Typography, Link} from "@mui/material";
+import React, {useCallback, useMemo, useState} from "react";
+import {Box, Typography, Link, CircularProgress} from "@mui/material";
 import WYButton from "../../../components/WYButton/WYButton";
 import WYTextField from "../../../components/WYTextField/WYTextField";
 import styles from "./SubmitConfirmation.module.scss";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import {SendOTPRequestModel} from "../../../models/Auth.model";
+import {sendOTP} from "../../../api/auth";
+import FormErrorText from "../../../components/FormErrorText";
 
 interface SubmitConfirmationProps {
     prevStep: () => void,
@@ -14,6 +16,8 @@ interface SubmitConfirmationProps {
 
 const SubmitConfirmation: React.FC<SubmitConfirmationProps> = ({prevStep, nextStep, verificationData}) => {
     const [otp, setOtp] = useState(["", "", "", ""]);
+    const [errorMessage, setErrorMessage] = useState<string | undefined>();
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (index: number, value: string) => {
         if (value.length > 1) return;
@@ -31,6 +35,23 @@ const SubmitConfirmation: React.FC<SubmitConfirmationProps> = ({prevStep, nextSt
             : { origin: "phone", value: phone };
     }, [verificationData]);
 
+    const handleSendOTP = useCallback(async (e: React.MouseEvent<HTMLElement>) => {
+        e.preventDefault();
+
+        setLoading(true);
+        setErrorMessage(undefined);
+
+        try {
+            const response = await sendOTP(verificationData);
+            if (!response.otpSent) {
+                setErrorMessage(response.message);
+            }
+        } catch (error) {
+            setErrorMessage("An error occurred.");
+        } finally {
+            setLoading(false);
+        }
+    }, [verificationData]);
 
     return (
         <Box className={styles.container}>
@@ -54,9 +75,12 @@ const SubmitConfirmation: React.FC<SubmitConfirmationProps> = ({prevStep, nextSt
                 </Box>
 
                 <Typography className={styles.resendText}>
-                    Didn’t get a code? <Link href="#">Click to resend.</Link>
+                    Didn’t get a code? <Link onClick={handleSendOTP} href="#">Click to resend.</Link>
                 </Typography>
             </Box>
+
+            <FormErrorText error={errorMessage} />
+            {loading && <CircularProgress size={20} color="inherit" />}
 
             <NavigationButtons nextLabel={"Next"} backLabel={"Back"} nextStep={nextStep} prevStep={prevStep}/>
         </Box>
