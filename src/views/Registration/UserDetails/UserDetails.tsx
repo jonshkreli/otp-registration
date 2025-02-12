@@ -63,7 +63,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
         <Box className={styles.container}>
             <form onSubmit={formik.handleSubmit} className={styles.formContainer}>
                 <WYSection sectionTitle={"User Details"}>
-                    <Box display={"flex"} flexWrap={"wrap"} justifyContent={"space-between"}>
+                    <Box className={styles.namesContainer}>
                         <Box className={styles.inputGroup}>
                             <WYTextField
                                 labelText="First Name"

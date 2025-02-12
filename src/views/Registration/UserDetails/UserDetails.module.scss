@@ -18,6 +18,18 @@
 
 .inputGroup {
   margin-bottom: 16px;
+  width: 100%;
+}
+
+.namesContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 24px;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 0;
+  }
 }
 
 .errorText {
