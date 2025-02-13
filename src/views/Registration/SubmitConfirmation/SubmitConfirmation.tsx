@@ -5,7 +5,7 @@ import styles from "./SubmitConfirmation.module.scss";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
 import {SendOTPRequestModel} from "../../../models/Auth.model";
 import {sendOTP} from "../../../api/auth";
-import FormErrorText from "../../../components/FormErrorText";
+import FormErrorText from "../../../components/FormErrorText/FormErrorText";
 import WYSection from "../../../components/WYSection/WYSection";
 
 interface SubmitConfirmationProps {

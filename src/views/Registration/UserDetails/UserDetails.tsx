@@ -16,7 +16,7 @@ import { registerUser } from "../../../api/auth";
 import styles from "./UserDetails.module.scss";
 import countriesFlags from "../../../constants/countiresFlags";
 import { GENDERS } from "../../../constants/other";
-import FormErrorText from "../../../components/FormErrorText";
+import FormErrorText from "../../../components/FormErrorText/FormErrorText";
 import { emptyUserRegistrationValues } from "../../../constants/registration";
 import WYSection from "../../../components/WYSection/WYSection";
 import { translate } from "../../../config/i18n";
