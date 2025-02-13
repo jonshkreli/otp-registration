@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { Checkbox, FormControlLabel, CheckboxProps } from "@mui/material";
+import {Checkbox, CheckboxProps, FormControlLabel} from "@mui/material";
 
 interface WYCheckboxProps extends CheckboxProps {
   label: string;

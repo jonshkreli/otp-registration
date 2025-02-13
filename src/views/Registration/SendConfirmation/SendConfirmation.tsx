@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Box, FormControl, RadioGroup, Typography, CircularProgress} from "@mui/material";
+import {Box, CircularProgress} from "@mui/material";
 import WYRadioGroup from "../../../components/WYRadioGroup/WYRadioGroup";
 import styles from "./SendConfirmation.module.scss";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
@@ -48,7 +48,7 @@ const SendConfirmation: React.FC<SendConfirmationProps> = ({nextStep, prevStep, 
 
     return (
         <WYSection sectionTitle={"OTP Verification"}>
-            <Box className={""}>
+            <Box>
                 <Box className={"card-container-style"}>
                     <p className={styles.subtitle}>Send Code</p>
                     <p className={styles.description}>

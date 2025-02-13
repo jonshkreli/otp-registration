@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Autocomplete, Box, Chip, IconButton, TextField, Tooltip, Typography} from "@mui/material";
+import {Autocomplete, Box, IconButton, TextField, Tooltip} from "@mui/material";
 import styles from "./WYPhoneInput.module.scss";
 import countriesFlags from "../../constants/countiresFlags";
 import {ArrowDropDown, InfoOutlined, QuestionMark, Search} from "@mui/icons-material";

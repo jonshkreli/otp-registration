@@ -1,6 +1,6 @@
 ﻿import React from "react";
-import { TextField, TextFieldProps, Tooltip } from "@mui/material";
-import { InfoOutlined } from "@mui/icons-material";
+import {TextField, TextFieldProps, Tooltip} from "@mui/material";
+import {InfoOutlined} from "@mui/icons-material";
 import clsx from "clsx";
 import styles from "./WYTextField.module.scss";
 

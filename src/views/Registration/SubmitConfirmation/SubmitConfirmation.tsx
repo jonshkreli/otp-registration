@@ -1,10 +1,10 @@
-import React, { useCallback, useMemo, useRef, useState } from "react";
-import { Box, Typography, Link, CircularProgress } from "@mui/material";
+import React, {useCallback, useMemo, useRef, useState} from "react";
+import {Box, CircularProgress, Link, Typography} from "@mui/material";
 import WYTextField from "../../../components/WYTextField/WYTextField";
 import styles from "./SubmitConfirmation.module.scss";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
-import { SendOTPRequestModel } from "../../../models/Auth.model";
-import { sendOTP } from "../../../api/auth";
+import {SendOTPRequestModel} from "../../../models/Auth.model";
+import {sendOTP} from "../../../api/auth";
 import FormErrorText from "../../../components/FormErrorText";
 import WYSection from "../../../components/WYSection/WYSection";
 

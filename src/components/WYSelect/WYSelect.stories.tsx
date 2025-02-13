@@ -1,4 +1,4 @@
-﻿import type { Meta, StoryObj } from "@storybook/react";
+﻿import type {Meta, StoryObj} from "@storybook/react";
 import WYSelect from "./WYSelect";
 
 const meta: Meta<typeof WYSelect> = {

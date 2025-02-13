@@ -83,14 +83,8 @@ $normal-input-border: 1px solid $input-border-color;
 
 
 // Global Reset
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  background-color: $background-color;
-  color: $text-color;
+  margin: 0;
+  padding: 10px 0;
 }
 

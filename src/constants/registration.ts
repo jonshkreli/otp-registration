@@ -1,4 +1,4 @@
-import {MultiStepperProps, StepConfig} from "../components/MultiStepper/MultiStepper";
+import {StepConfig} from "../components/MultiStepper/MultiStepper";
 import {RegistrationRequestModel} from "../models/Auth.model";
 
 

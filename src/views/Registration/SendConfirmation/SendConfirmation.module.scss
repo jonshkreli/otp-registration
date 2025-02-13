@@ -1,21 +1,5 @@
 @import "../../../styles/styles";
 
-.title {
-  font-weight: 600;
-  margin-bottom: 16px;
-  color: $text-color;
-  font-family: $title-font;
-}
-
-.card {
-  background: $secondary-color;
-  padding: 24px;
-  border-radius: 8px;
-  width: 100%;
-  //max-width: 400px;
-  text-align: center;
-}
-
 .subtitle {
   font-weight: 500;
   color: $header-secondary-color;
@@ -30,31 +14,4 @@
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 16px;
-}
-
-.radioGroup {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-
-
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 16px;
-  width: 100%;
-  //max-width: 400px;
-}
-
-.backButton {
-  border-color: $primary-action-color;
-  color: $primary-action-color;
-}
-
-.nextButton {
-  background-color: $primary-action-color;
-  color: white;
 }

@@ -1,4 +1,4 @@
-﻿import type { Meta, StoryObj } from "@storybook/react";
+﻿import type {Meta, StoryObj} from "@storybook/react";
 import WYCheckbox from "./WYCheckbox";
 
 const meta: Meta<typeof WYCheckbox> = {

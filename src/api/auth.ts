@@ -8,10 +8,10 @@ import {
     VerifyOTPResponseModel,
 } from "../models/Auth.model";
 import {
-    FORGOT_PASSWORD_ENDPOINT,
     REGISTER_ENDPOINT,
     REGISTER_ENDPOINT_ERROR,
-    SEND_OTP_ENDPOINT, SEND_OTP_ENDPOINT_ERROR,
+    SEND_OTP_ENDPOINT,
+    SEND_OTP_ENDPOINT_ERROR,
     VERIFY_OTP_ENDPOINT
 } from "../constants/urls";
 

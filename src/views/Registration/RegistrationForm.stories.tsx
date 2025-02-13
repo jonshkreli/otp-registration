@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type {Meta, StoryObj} from "@storybook/react";
 import RegistrationForm from "./RegistrationForm";
-import { BrowserRouter } from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
 const meta: Meta<typeof RegistrationForm> = {
     title: "Forms/RegistrationForm",

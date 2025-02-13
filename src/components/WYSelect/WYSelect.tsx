@@ -1,8 +1,7 @@
 ﻿import React from "react";
-import { FormControl, InputLabel, MenuItem, Select, SelectProps, Tooltip } from "@mui/material";
+import {FormControl, MenuItem, Select, SelectProps, Tooltip} from "@mui/material";
 import styles from "../WYTextField/WYTextField.module.scss";
-import { InfoOutlined } from "@mui/icons-material";
-import {Country} from "../../models/Country";
+import {InfoOutlined} from "@mui/icons-material";
 
 interface WYSelectProps extends Omit<SelectProps, "children"> {
     labelText: string;

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import {Box, Button, Step, StepLabel, Stepper, Typography} from "@mui/material";
+import React from "react";
+import {Box} from "@mui/material";
 import StepperHeader from "./StepperHeader/StepperHeader";
-import styles from "./MultiStepper.module.scss";
 
 export interface MultiStepperProps {
     pageTitle: string;
@@ -14,7 +13,7 @@ const MultiStepper: React.FC<MultiStepperProps> = ({ pageTitle, stepsDetails, co
     const totalSteps = components.length;
 
     return (
-        <Box className="MultiStepper-container"
+        <Box
              sx={{
                  display: "flex",
                  flexDirection: "column",

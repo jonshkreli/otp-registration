@@ -11,7 +11,7 @@ interface WYRadioGroupProps {
 const WYRadioGroup: React.FC<WYRadioGroupProps> = ({value, onChange, options, ...props}) => {
     return (
         <FormControl component="fieldset" className={styles.radioGroup}>
-            <RadioGroup value={value} onChange={onChange} className={styles.radioGroup}
+            <RadioGroup value={value} onChange={onChange}
                         sx={{
                             display: "flex",
                             flexDirection: "row",
