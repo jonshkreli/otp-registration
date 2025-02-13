@@ -124,6 +124,8 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
                     <Box className={styles.inputGroup}>
                         <WYPhoneInput
                             labelText="Phone Number"
+                            placeholder={"Enter phone number"}
+                            placeholderForSearch={"Search"}
                             name="phone"
                             required
                             value={formik.values.phone}

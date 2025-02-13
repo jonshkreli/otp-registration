@@ -12,9 +12,11 @@ interface WYPhoneInputProps {
     value: string;
     onChange: (value: string) => void;
     tooltipText?: string;
+    placeholder?: string;
+    placeholderForSearch?: string;
 }
 
-const WYPhoneInput: React.FC<WYPhoneInputProps> = ({ labelText, name, required, value, onChange, tooltipText }) => {
+const WYPhoneInput: React.FC<WYPhoneInputProps> = ({ labelText, name, required, value, onChange, tooltipText, placeholder, placeholderForSearch }) => {
     const [selectedCountry, setSelectedCountry] = useState<Country | null>(countriesFlags.find(c => c.value === (value)) || countriesFlags[0]); // 🇦🇪 Default: UAE
     const [showCountrySelect, setShowCountrySelect] = useState(false);
 
@@ -54,7 +56,7 @@ const WYPhoneInput: React.FC<WYPhoneInputProps> = ({ labelText, name, required, 
                 name={name}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                placeholder="Enter phone number"
+                placeholder={placeholder}
                 className={styles.phoneField}
                 InputProps={{
                     startAdornment: (
@@ -91,7 +93,7 @@ const WYPhoneInput: React.FC<WYPhoneInputProps> = ({ labelText, name, required, 
                         renderInput={(params) => (
                             <TextField
                                 {...params}
-                                placeholder={"Search"}
+                                placeholder={placeholderForSearch}
                                 variant="outlined"
                                 InputProps={{
                                     ...params.InputProps,
