@@ -4,8 +4,8 @@ import WYButton from "../../../components/WYButton/WYButton";
 import styles from "./NavigationButtons.module.scss";
 
 interface SendConfirmationProps {
-    nextLabel: string;
-    backLabel: string;
+    nextLabel?: string;
+    backLabel?: string;
     nextStep?: () => void;
     prevStep?: () => void;
 }

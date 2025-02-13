@@ -1,0 +1,58 @@
+{
+  "registration": {
+    "UserDetails": {
+      "section1": {
+        "title": "User Details",
+        "firstNameLabel": "First Name",
+        "firstNamePlaceholder": "Enter first name",
+        "lastNameLabel": "Last Name",
+        "lastNamePlaceholder": "Enter last name",
+        "genderLabel": "Gender",
+        "genderPlaceholder": "Select gender...",
+        "countryLabel": "Country of Residence",
+        "countryPlaceholder": "Select residence country..."
+      },
+      "section2": {
+        "title": "Contact Details",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Enter email address..",
+        "phoneLabel": "Phone Number",
+        "phonePlaceholder": "Enter phone number",
+        "phoneSearchPlaceholder": "Search"
+      },
+      "agreeToTerms": "I agree to the terms and conditions and privacy policy",
+      "errors": {
+        "firstNameRequired": "First Name is required",
+        "lastNameRequired": "Last Name is required",
+        "genderRequired": "Gender is required",
+        "countryRequired": "Country of residence is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Email is not valid",
+        "phoneRequired": "Phone number is required",
+        "termsRequired": "You must accept terms",
+        "registrationFailed": "Registration failed. Please try again.",
+        "general": "An error occurred. Please try again."
+      },
+      "buttons": {
+        "next": "NEXT",
+        "processing": "Processing..."
+      },
+      "sendConfirmation": {
+        "sectionTitle": "OTP Verification",
+        "subtitle": "Send Code",
+        "description": "How would you like to receive the code?",
+        "otpMethod": {
+          "SendToPhone": "Send to Phone",
+          "SendToEmail": "Send to Email"
+        },
+        "NavigationButtons": {
+          "Back": "Back",
+          "Next": "Next"
+        },
+        "errors": {
+          "general": "An error occurred. Please try again."
+        }
+      }
+    }
+  }
+}

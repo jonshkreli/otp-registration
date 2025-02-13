@@ -1,41 +1,48 @@
-import React, {useState} from "react";
-import {Box} from "@mui/material";
-import {useFormik} from "formik";
+import React, { useState } from "react";
+import { Box } from "@mui/material";
+import { useFormik } from "formik";
 import * as Yup from "yup";
-import {RegistrationRequestModel, RegistrationResponseModel, SendOTPRequestModel} from "../../../models/Auth.model";
+import {
+    RegistrationRequestModel,
+    RegistrationResponseModel,
+    SendOTPRequestModel
+} from "../../../models/Auth.model";
 import WYTextField from "../../../components/WYTextField/WYTextField";
 import WYSelect from "../../../components/WYSelect/WYSelect";
 import WYCheckbox from "../../../components/WYCheckbox/WYCheckbox";
 import WYPhoneInput from "../../../components/WYPhoneInput/WYPhoneInput";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
-import {registerUser} from "../../../api/auth";
+import { registerUser } from "../../../api/auth";
 import styles from "./UserDetails.module.scss";
 import countriesFlags from "../../../constants/countiresFlags";
-import {GENDERS} from "../../../constants/other";
+import { GENDERS } from "../../../constants/other";
 import FormErrorText from "../../../components/FormErrorText";
-import {emptyUserRegistrationValues} from "../../../constants/registration";
+import { emptyUserRegistrationValues } from "../../../constants/registration";
 import WYSection from "../../../components/WYSection/WYSection";
+import { translate } from "../../../config/i18n";
+import {useTranslation} from "react-i18next";
 
 interface UserDetailsProps {
-    nextStep: ({userData, otpRequestData}: {userData?: RegistrationRequestModel,otpRequestData?: SendOTPRequestModel}) => void;
+    nextStep: ({ userData, otpRequestData }: { userData?: RegistrationRequestModel, otpRequestData?: SendOTPRequestModel }) => void;
 }
 
 const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
+
     const formik = useFormik<RegistrationRequestModel>({
         initialValues: emptyUserRegistrationValues,
         validationSchema: Yup.object({
-            firstName: Yup.string().required("First Name is required"),
-            lastName: Yup.string().required("Last Name is required"),
-            gender: Yup.string().required("Gender is required"),
-            residenceCountry: Yup.string().required("Country of residence is required"),
-            email: Yup.string().email("Invalid email").required("Email is required"),
-            phone: Yup.string().required("Phone number is required"),
+            firstName: Yup.string().required(translate("registration.UserDetails.errors.firstNameRequired")),
+            lastName: Yup.string().required(translate("registration.UserDetails.errors.lastNameRequired")),
+            gender: Yup.string().required(translate("registration.UserDetails.errors.genderRequired")),
+            residenceCountry: Yup.string().required(translate("registration.UserDetails.errors.countryRequired")),
+            email: Yup.string().email(translate("registration.UserDetails.errors.emailInvalid")).required(translate("registration.UserDetails.errors.emailRequired")),
+            phone: Yup.string().required(translate("registration.UserDetails.errors.phoneRequired")),
             agreeToTerms: Yup.boolean()
-                .oneOf([true], "You must accept terms")
-                .required("You must accept terms"),
+                .oneOf([true], translate("registration.UserDetails.errors.termsRequired"))
+                .required(translate("registration.UserDetails.errors.termsRequired")),
         }),
         validateOnMount: true,
         onSubmit: async (values) => {
@@ -46,13 +53,13 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
                 const result: RegistrationResponseModel = await registerUser(values);
                 console.log("API Response:", result);
                 if (result.userId) {
-                    nextStep({userData: values});
+                    nextStep({ userData: values });
                 } else {
-                    setErrorMessage(result.message || "Registration failed. Please try again.");
+                    setErrorMessage(result.message || translate("registration.UserDetails.errors.registrationFailed"));
                 }
             } catch (error) {
                 console.error("API Error:", error);
-                setErrorMessage("An error occurred. Please try again.");
+                setErrorMessage(translate("registration.UserDetails.errors.general"));
             } finally {
                 setLoading(false);
             }
@@ -62,13 +69,13 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
     return (
         <Box className={styles.container}>
             <form onSubmit={formik.handleSubmit} className={styles.formContainer}>
-                <WYSection sectionTitle={"User Details"}>
+                <WYSection sectionTitle={translate("registration.UserDetails.section1.title")}>
                     <Box className={styles.namesContainer}>
                         <Box className={styles.inputGroup}>
                             <WYTextField
-                                labelText="First Name"
-                                placeholder="Enter first name"
-                                tooltipText="Your name"
+                                labelText={translate("registration.UserDetails.section1.firstNameLabel")}
+                                placeholder={translate("registration.UserDetails.section1.firstNamePlaceholder")}
+                                tooltipText={translate("registration.UserDetails.tooltips.firstNameLabel")}
                                 required
                                 {...formik.getFieldProps("firstName")}
                             />
@@ -77,9 +84,9 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
 
                         <Box className={styles.inputGroup}>
                             <WYTextField
-                                labelText="Last Name"
-                                placeholder="Enter last name"
-                                tooltipText="Your name"
+                                labelText={translate("registration.UserDetails.section1.lastNameLabel")}
+                                placeholder={translate("registration.UserDetails.section1.lastNamePlaceholder")}
+                                tooltipText={translate("registration.UserDetails.section1.lastNameTooltip")}
                                 required
                                 {...formik.getFieldProps("lastName")}
                             />
@@ -89,10 +96,11 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
 
                     <Box className={styles.inputGroup}>
                         <WYSelect
-                            labelText="Gender"
+                            labelText={translate("registration.UserDetails.section1.genderLabel")}
+                            placeholder={translate("registration.UserDetails.section1.genderPlaceholder")}
+                            tooltipText={translate("registration.UserDetails.section1.genderLabel")}
                             name="gender"
                             required
-                            placeholder="Select gender..."
                             value={formik.values.gender}
                             onChange={formik.handleChange}
                             options={GENDERS}
@@ -102,10 +110,11 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
 
                     <Box className={styles.inputGroup}>
                         <WYSelect
-                            labelText="Your Residence Country"
+                            labelText={translate("registration.UserDetails.section1.countryLabel")}
+                            placeholder={translate("registration.UserDetails.section1.countryPlaceholder")}
+                            tooltipText={translate("registration.UserDetails.section1.countryLabel")}
                             name="residenceCountry"
                             required
-                            placeholder="Select residence country..."
                             value={formik.values.residenceCountry}
                             onChange={formik.handleChange}
                             options={countriesFlags}
@@ -115,17 +124,25 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
 
                 </WYSection>
 
-                <WYSection sectionTitle={"Contact Details"}>
+                <WYSection sectionTitle={translate("registration.UserDetails.section2.title")}>
                     <Box className={styles.inputGroup}>
-                        <WYTextField labelText="Email" type="email" required {...formik.getFieldProps("email")} />
+                        <WYTextField
+                            labelText={translate("registration.UserDetails.section2.emailLabel")}
+                            placeholder={translate("registration.UserDetails.section2.emailPlaceholder")}
+                            tooltipText={translate("registration.UserDetails.section2.emailLabel")}
+                            type="email"
+                            required
+                            {...formik.getFieldProps("email")}
+                        />
                         <FormErrorText error={formik.touched.email ? formik.errors.email : ""} />
                     </Box>
 
                     <Box className={styles.inputGroup}>
                         <WYPhoneInput
-                            labelText="Phone Number"
-                            placeholder={"Enter phone number"}
-                            placeholderForSearch={"Search"}
+                            labelText={translate("registration.UserDetails.section2.phoneLabel")}
+                            placeholder={translate("registration.UserDetails.section2.phonePlaceholder")}
+                            placeholderForSearch={translate("registration.UserDetails.phoneSearchPlaceholder")}
+                            tooltipText={translate("registration.UserDetails.section2.phoneLabel")}
                             name="phone"
                             required
                             value={formik.values.phone}
@@ -137,7 +154,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
 
                 <Box className={styles.inputGroup}>
                     <WYCheckbox
-                        label="I agree to the terms and conditions and privacy policy"
+                        label={translate("registration.UserDetails.agreeToTerms")}
                         name="agreeToTerms"
                         checked={formik.values.agreeToTerms}
                         onChange={(event) => formik.setFieldValue("agreeToTerms", event.target.checked)}
@@ -148,8 +165,7 @@ const UserDetails: React.FC<UserDetailsProps> = ({ nextStep }) => {
                 {errorMessage && <FormErrorText error={errorMessage} />}
 
                 <NavigationButtons
-                    nextLabel={loading ? "Processing..." : "Next"}
-                    backLabel="Back"
+                    nextLabel={loading ? translate("registration.UserDetails.buttons.processing") : translate("registration.UserDetails.buttons.next")}
                     nextStep={formik.handleSubmit}
                 />
             </form>
