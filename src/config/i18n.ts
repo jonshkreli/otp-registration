@@ -8,7 +8,7 @@ i18n
     .init({
         lng: "en",
         fallbackLng: "en",
-        debug: true, // Enable debugging to check errors in console
+        // debug: true, // Enable debugging to check errors in console
         backend: {
             loadPath: "../locales/{{lng}}/translation.json",
             crossDomain: true,

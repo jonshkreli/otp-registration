@@ -1,26 +1,21 @@
-import React, { useState } from "react";
-import { Box } from "@mui/material";
-import { useFormik } from "formik";
+import React, {useState} from "react";
+import {Box} from "@mui/material";
+import {useFormik} from "formik";
 import * as Yup from "yup";
-import {
-    RegistrationRequestModel,
-    RegistrationResponseModel,
-    SendOTPRequestModel
-} from "../../../models/Auth.model";
+import {RegistrationRequestModel, RegistrationResponseModel, SendOTPRequestModel} from "../../../models/Auth.model";
 import WYTextField from "../../../components/WYTextField/WYTextField";
 import WYSelect from "../../../components/WYSelect/WYSelect";
 import WYCheckbox from "../../../components/WYCheckbox/WYCheckbox";
 import WYPhoneInput from "../../../components/WYPhoneInput/WYPhoneInput";
 import NavigationButtons from "../NavigationButtons/NavigationButtons";
-import { registerUser } from "../../../api/auth";
+import {registerUser} from "../../../api/auth";
 import styles from "./UserDetails.module.scss";
 import countriesFlags from "../../../constants/countiresFlags";
-import { GENDERS } from "../../../constants/other";
+import {GENDERS} from "../../../constants/other";
 import FormErrorText from "../../../components/FormErrorText/FormErrorText";
-import { emptyUserRegistrationValues } from "../../../constants/registration";
+import {emptyUserRegistrationValues} from "../../../constants/registration";
 import WYSection from "../../../components/WYSection/WYSection";
-import { translate } from "../../../config/i18n";
-import {useTranslation} from "react-i18next";
+import {translate} from "../../../config/i18n";
 
 interface UserDetailsProps {
     nextStep: ({ userData, otpRequestData }: { userData?: RegistrationRequestModel, otpRequestData?: SendOTPRequestModel }) => void;
