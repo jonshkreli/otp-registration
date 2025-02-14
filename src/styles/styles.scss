@@ -1,3 +1,4 @@
+// font definitions, more likely to be used only for development purposes
 @font-face {
   font-family: "Big Caslon";
   src: url("../assets/fonts/Big Caslon Medium.ttf") format("truetype");
@@ -17,13 +18,15 @@
   font-style: normal;
 }
 
-// Colors
+// Color definitions
+// general colors
 $primary-action-color: #006f62;
 $secondary-color: #f9f9f9;
 $white-color: #FFF;
 $black-color: #000;
 $background-color: #F8F8F8;
 
+// specific colors
 $border-color: #D1D5DB;
 $input-border-color: #E8E9E9;
 $text-color: #333;
@@ -39,17 +42,15 @@ $description-color: #667085;
 
 
 // Typography
-$title-font: "Arial", sans-serif;
-$subtitle-font: "Roboto", sans-serif;
-
 $font-actor: 'Actor', sans-serif;
 $font-avenir-lt-std: 'Avenir LT Std', sans-serif;
 $font-big-caslon: 'Big Caslon', sans-serif;
-$font-font-awesome-6-free: 'Font Awesome 6 Free', sans-serif;
-$font-inter: 'Inter', sans-serif;
 
 $title-font-size: 37px;
 $big-input-text-size: 48px;
+
+
+// usable styles
 
 @mixin big-input-text-style {
   font-size: $big-input-text-size;

@@ -8,13 +8,15 @@ const config = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
-      "@storybook/preset-scss"
+      "@storybook/preset-scss",
+      "@storybook/addon-links",
+    "@storybook/addon-essentials"
   ],
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
   },
-  staticDirs: ["../public"],
+  staticDirs: ["../src/assets"],
   webpackFinal: async (config) => {
     // Add support for TypeScript files
     config.module.rules.push({
