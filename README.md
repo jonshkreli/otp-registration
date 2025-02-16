@@ -15,11 +15,17 @@ npm install
 To start the development server:
 
 ```sh
-npm start
+npm run dev
+```
+
+To run storybook:
+
+```sh
+npm run storybook
 ```
 
 If you are using a JetBrains IDE (Webstorm or intelliJ), you can also install the dependencies via the IDE's built-in terminal.
-![img_1.png](img_1.png)
+![img.png](img.png)
 
 ## Dependencies
 

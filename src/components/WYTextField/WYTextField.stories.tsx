@@ -27,6 +27,8 @@ export const Required: Story = {
 };
 export const OTPStyle: Story = {
     args: {
-        otpStyle: true
+        otpStyle: true,
+        placeholder: undefined,
+        labelText: undefined,
     },
 };
