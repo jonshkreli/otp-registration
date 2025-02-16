@@ -1,4 +1,4 @@
-@import "../../styles/styles.scss";
+@use "../../styles/styles.scss";
 
 .sectionContainer {
   display: flex;
@@ -7,9 +7,9 @@
 }
 
 .sectionTitle {
-  font-family: $font-big-caslon;
+  font-family: styles.$font-big-caslon;
   font-size: 22px;
-  color: $header-color;
+  color: styles.$header-color;
   border-bottom: 2px black solid;
   width: fit-content;
 }

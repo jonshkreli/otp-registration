@@ -1,4 +1,4 @@
-@import "../../../styles/styles.scss";
+@use "../../../styles/styles.scss";
 
 .container {
   display: flex;
@@ -16,23 +16,23 @@
 }
 
 .title {
-  font-family: $font-big-caslon;
+  font-family: styles.$font-big-caslon;
   font-weight: 500;
   font-size: 37px;
-  color: $header-color;
+  color: styles.$header-color;
 }
 
 .stepIndicator {
-  font-family: $font-big-caslon;
+  font-family: styles.$font-big-caslon;
   font-size: 24px;
   font-weight: 500;
-  color: $header-color;
+  color: styles.$header-color;
 }
 
 .description {
-  font-family: $font-avenir-lt-std;
+  font-family: styles.$font-avenir-lt-std;
   font-size: 15.5px;
   font-weight: 600;
-  color: $normal-text-color;
+  color: styles.$normal-text-color;
   margin-top: 5px;
 }

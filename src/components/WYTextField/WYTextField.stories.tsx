@@ -25,3 +25,8 @@ export const Required: Story = {
         required: true,
     },
 };
+export const OTPStyle: Story = {
+    args: {
+        otpStyle: true
+    },
+};

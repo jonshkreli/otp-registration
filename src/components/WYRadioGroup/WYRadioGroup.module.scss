@@ -1,19 +1,19 @@
-@import "../../styles/styles.scss";
+@use "../../styles/styles.scss";
 
 .checkboxGroup {
   display: flex;
   align-items: center;
-  font-family: $font-avenir-lt-std;
+  font-family: styles.$font-avenir-lt-std;
   font-size: 16px;
   font-weight: 600;
-  color: $normal-text-color;
+  color: styles.$normal-text-color;
   margin: 0 10px;
 
   .MuiRadio-root {
-    color: $border-color;
+    color: styles.$border-color;
   }
 
   .Mui-checked {
-    color: $primary-action-color !important;
+    color: styles.$primary-action-color !important;
   }
 }

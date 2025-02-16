@@ -1,6 +1,6 @@
-@import "../../styles/styles";
+@use "../../styles/styles";
 
 .errorText {
-  color: $error-color !important;
-  font-family: $font-avenir-lt-std !important;
+  color: styles.$error-color !important;
+  font-family: styles.$font-avenir-lt-std !important;
 }

@@ -1,5 +1,5 @@
 // Base API URL (Change this to your actual API URL)
-export const API_BASE_URL = ""; // already in proxy
+export const API_BASE_URL = "api"; // already in proxy
 
 // Authentication Endpoints
 export const REGISTER_ENDPOINT = `${API_BASE_URL}/register`;

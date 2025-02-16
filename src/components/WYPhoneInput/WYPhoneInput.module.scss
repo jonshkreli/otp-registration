@@ -1,4 +1,4 @@
-@import "../../styles/styles.scss";
+@use "../../styles/styles.scss";
 
 .phoneInputContainer {
   position: relative;
@@ -6,10 +6,10 @@
 }
 
 .phoneField {
-  @include normal-input-style;
-  background: $input-bg;
-  font-family: $font-avenir-lt-std;
-  color: $text-color;
+  @include styles.normal-input-style;
+  background: styles.$input-bg;
+  font-family: styles.$font-avenir-lt-std;
+  color: styles.$text-color;
   padding-left: 50px;
   border: none;
 
@@ -39,6 +39,6 @@
   margin-top: 5px;
   left: 0;
   width: 100%;
-  background: $input-bg;
+  background: styles.$input-bg;
   z-index: 10;
 }

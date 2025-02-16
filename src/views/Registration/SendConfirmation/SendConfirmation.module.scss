@@ -1,16 +1,16 @@
-@import "../../../styles/styles";
+@use "../../../styles/styles";
 
 .subtitle {
   font-weight: 500;
-  color: $header-secondary-color;
-  font-family: $font-big-caslon;
+  color: styles.$header-secondary-color;
+  font-family: styles.$font-big-caslon;
   font-size: 20px;
   margin-bottom: 8px;
 }
 
 .description {
-  color: $description-color;
-  font-family: $font-avenir-lt-std;
+  color: styles.$description-color;
+  font-family: styles.$font-avenir-lt-std;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 16px;
